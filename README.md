@@ -620,4 +620,5 @@ These features are **not part of the current implementation**.
 
 ## Contact
 
-**GitHub:** https://github.com/OvidiuN19
+GitHub: [OvidiuN19](https://github.com/OvidiuN19)
+LinkedIn: [OvidiuNeagu](https://www.linkedin.com/in/ovidiu-dumitru-neagu-4680a8194/)
