@@ -1,0 +1,61 @@
+services:
+
+  node1-nginx:
+    image: nginx
+    container_name: node1-nginx
+    networks:
+      - monitoring-net
+    ports:
+      - "8081:80"
+
+  node1-exporter:
+    image: prom/node-exporter
+    container_name: node1-exporter
+    networks:
+      - monitoring-net
+
+  node2-nginx:
+    image: nginx
+    container_name: node2-nginx
+    networks:
+      - monitoring-net
+    ports:
+      - "8082:80"
+
+  node2-exporter:
+    image: prom/node-exporter
+    container_name: node2-exporter
+    networks:
+      - monitoring-net
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    networks:
+      - monitoring-net
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    networks:
+      - monitoring-net
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+networks:
+  monitoring-net:
+    external: true
+    name: monitoring-net
+
+volumes:
+  prometheus-data:
+    external: true
+  grafana-data:
+    external: true

@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "node-exporters"
+    static_configs:
+      - targets:
+          - "node1-exporter:9100"
+          - "node2-exporter:9100"
